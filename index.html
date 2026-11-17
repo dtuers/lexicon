@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<title>Lexicon – angličtina</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Lexicon"><meta name="theme-color" content="#0e0e10"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap">
+<style>
+:root{--bg:#f6f3ee;--card:#fffdf9;--fg:#1a1814;--mute:#8a8274;--gold:#a8812f;--line:#e4ddd0;--ok:#3f7a55;--bad:#a8403a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e10;--card:#17171a;--fg:#efe9dc;--mute:#8b857a;--gold:#c9a45c;--line:#2a2a2e;--ok:#6fbf8b;--bad:#e0746c}}
+:root[data-theme="dark"]{--bg:#0e0e10;--card:#17171a;--fg:#efe9dc;--mute:#8b857a;--gold:#c9a45c;--line:#2a2a2e;--ok:#6fbf8b;--bad:#e0746c}
+html,body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.5 Inter,system-ui,sans-serif}
+*{box-sizing:border-box}
+main{max-width:640px;margin:0 auto;padding:20px 20px 60px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+h1{font:600 28px Cormorant Garamond,Georgia,serif;letter-spacing:.08em;margin:0;color:var(--gold)}
+h2{font:500 13px Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:30px 0 12px}
+.ic{background:none;border:1px solid var(--line);color:var(--fg);border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:16px;margin-left:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:10px}
+.lv{background:var(--card);border:1px solid var(--line);color:var(--fg);border-radius:14px;padding:14px 0;font:500 18px Cormorant Garamond,Georgia,serif;cursor:pointer}
+.lv.done{border-color:var(--gold);color:var(--gold)}
+.lv:disabled{opacity:.35;cursor:default}
+.btn{background:var(--gold);color:var(--bg);border:0;border-radius:999px;padding:13px 28px;font:500 15px Inter,sans-serif;cursor:pointer}
+.btn.g{background:none;border:1px solid var(--line);color:var(--fg)}
+.stat{display:flex;gap:24px;color:var(--mute);font-size:14px}
+.stat b{color:var(--fg);font:600 22px Cormorant Garamond,Georgia,serif}
+.big{font:500 30px/1.25 Cormorant Garamond,Georgia,serif;margin:8px 0 22px}
+.lab{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.bar{height:3px;background:var(--line);border-radius:3px;margin-bottom:22px}.bar i{display:block;height:100%;background:var(--gold);border-radius:3px;transition:width .3s}
+.zone{min-height:62px;border-bottom:1px solid var(--line);padding:6px 0;display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tray{display:flex;flex-wrap:wrap;gap:8px;min-height:50px;margin-bottom:22px}
+.t,.opt{background:var(--bg);border:1px solid var(--line);color:var(--fg);border-radius:12px;padding:9px 14px;font:inherit;cursor:pointer}
+.opt{display:block;width:100%;text-align:left;margin-bottom:8px;padding:13px 16px}
+.ok{border-color:var(--ok)!important;color:var(--ok)}.bad{border-color:var(--bad)!important;color:var(--bad)}
+input.in{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--fg);border-radius:12px;padding:13px 16px;font:inherit;margin-bottom:14px}
+.fb{margin:6px 0 18px;font-size:15px;min-height:24px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.path{display:flex;flex-direction:column;align-items:center;gap:16px;padding:6px 0}
+.path .lv{width:68px;height:68px;border-radius:50%;padding:0;font-size:22px;box-shadow:0 5px 0 var(--line)}
+.path .lv.cur{background:var(--gold);color:var(--bg);border-color:var(--gold);box-shadow:0 5px 0 rgba(0,0,0,.25)}
+.goal{height:6px;background:var(--line);border-radius:6px;margin-top:14px}.goal i{display:block;height:100%;background:var(--gold);border-radius:6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair .opt{text-align:center;margin:0}.sel{border-color:var(--gold)!important}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.chip{background:none;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:8px 18px;font:inherit;cursor:pointer}.chip.on{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+</style>
+</head>
+<body>
+<main>
+<header><h1>LEXICON</h1><div><button class="ic" id="snd" aria-label="Zvuk">♪</button><button class="ic" id="thm" aria-label="Motiv">◐</button></div></header>
+<div id="app"></div>
+</main>
+<script>
+const $=s=>document.querySelector(s),app=$('#app'),N=6,IV=[0,1,3,7,14,30];
+let S={xp:0,done:{},box:{},mute:false,theme:null,streak:0,did:'',day:'',dxp:0,hearts:5,hAt:Date.now(),cur:''},T=[];
+try{Object.assign(S,JSON.parse(localStorage.getItem('lex2')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('lex2',JSON.stringify(S))}catch(e){}};
+const shuf=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const norm=s=>s.toLowerCase().replace(/[’']/g,"'").trim();
+function theme(){if(S.theme)document.documentElement.dataset.theme=S.theme;else delete document.documentElement.dataset.theme}
+function icons(){$('#snd').textContent=S.mute?'✕':'♪';$('#snd').title=S.mute?'Zvuk vypnut':'Zvuk zapnut'}
+$('#thm').onclick=()=>{const dark=document.documentElement.dataset.theme?document.documentElement.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;S.theme=dark?'light':'dark';theme();save()};
+$('#snd').onclick=()=>{S.mute=!S.mute;if(S.mute&&window.speechSynthesis)speechSynthesis.cancel();icons();save()};
+theme();icons();
+function say(t){if(S.mute||!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=.9;speechSynthesis.speak(u)}
+const dstr=o=>new Date(Date.now()-o*864e5).toDateString();
+function regen(){while(S.hearts<5&&Date.now()-S.hAt>9e5){S.hearts++;S.hAt+=9e5}if(S.hearts>=5)S.hAt=Date.now()}
+function day(){if(S.day!==dstr(0)){S.day=dstr(0);S.dxp=0;save()}}
+const streak=()=>S.did===dstr(0)||S.did===dstr(1)?S.streak:0;
+let AC;function beep(f){if(S.mute)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.value=.06;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+.15)}catch(e){}}
+const key=it=>`${it.t}|${it.k}|${it.i}`,ent=it=>T.find(x=>x.id===it.t)[it.k][it.i],bx=it=>(S.box[key(it)]||[0])[0],dn=(t,k)=>S.done[t+'|'+k]||0;
+function lev(a,b){const m=[...Array(a.length+1)].map((_,i)=>[i]);for(let j=1;j<=b.length;j++)m[0][j]=j;for(let i=1;i<=a.length;i++)for(let j=1;j<=b.length;j++)m[i][j]=Math.min(m[i-1][j]+1,m[i][j-1]+1,m[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return m[a.length][b.length]}
+function grade(it,ok){const b=bx(it),nb=ok?Math.min(b+1,5):0;S.box[key(it)]=[nb,Date.now()+(ok?IV[nb]*864e5:6e5)];save()}
+function due(){return Object.keys(S.box).filter(id=>S.box[id][1]<=Date.now()).map(id=>{const[t,k,i]=id.split('|');return{t,k,i:+i}}).filter(it=>T.some(x=>x.id===it.t&&x[it.k]&&x[it.k][it.i]))}
+/* Načítání témat ze složky data/ – každý soubor .json = jedno téma */
+async function names(){
+ const h=location.hostname;
+ if(h.endsWith('github.io')){try{let r=location.pathname.split('/')[1];if(!r||r.includes('.'))r=h;
+  const j=await(await fetch(`https://api.github.com/repos/${h.split('.')[0]}/${r}/contents/data`)).json();
+  const l=j.map(f=>f.name).filter(n=>/\.json$/.test(n)&&n!=='manifest.json');
+  if(l.length){try{localStorage.setItem('lexn',JSON.stringify(l))}catch(e){}return l}}catch(e){}}
+ try{return(await(await fetch('data/manifest.json')).json()).files}catch(e){}
+ try{return JSON.parse(localStorage.getItem('lexn'))||[]}catch(e){return[]}
+}
+async function load(){
+ app.innerHTML='<p class="lab">Načítám…</p>';T=[];
+ for(const n of await names()){try{const j=await(await fetch('data/'+n)).json(),f=a=>(a||[]).map(([en,cs])=>({en,cs}));
+  T.push({id:n.replace(/\.json$/,''),name:j.name||n,p:f(j.phrases),w:f(j.words)})}catch(e){}}
+ home();
+}
+function home(){regen();day();
+ if(!T.length){app.innerHTML='<div class="card"><p class="big">Žádná data</p><p class="lab">Nahraj soubory .json do složky data</p></div>';return}
+ if(!T.some(x=>x.id===S.cur))S.cur=T[0].id;
+ const d=due(),th=T.find(x=>x.id===S.cur);
+ let h=`<div class="card"><div class="stat"><div><b>🔥 ${streak()}</b><br>série</div><div><b>❤ ${S.hearts}</b><br>životy</div><div><b>${S.xp}</b><br>XP</div><div><b>${d.length}</b><br>k opakování</div></div><div class="goal"><i style="width:${Math.min(100,S.dxp*2)}%"></i></div><p class="lab" style="margin:8px 0 0">Denní cíl ${Math.min(S.dxp,50)} / 50 XP</p>`;
+ if(d.length)h+=`<p><button class="btn" id="rev">Opakovat nyní</button></p>`;
+ h+=`</div><div class="chips">`+T.map(x=>`<button class="chip ${x.id===S.cur?'on':''}" data-t="${x.id}">${x.name}</button>`).join('')+`</div>`;
+ for(const [k,t] of [['p','Věty'],['w','Slovíčka']]){
+  if(!th[k].length)continue;const n=Math.ceil(th[k].length/N),c=dn(th.id,k);h+=`<h2>${th.name} · ${t}</h2><div class="path">`;
+  for(let l=0;l<n;l++)h+=`<button class="lv ${l<c?'done':l===c?'cur':''}" style="transform:translateX(${Math.round(Math.sin(l*1.3)*52)}px)" data-t="${th.id}" data-k="${k}" data-l="${l}" ${l>c?'disabled':''}>${l<c?'✓':l+1}</button>`;
+  h+=`</div>`}
+ app.innerHTML=h;
+ app.querySelectorAll('.lv').forEach(b=>b.onclick=()=>lesson(b.dataset.t,b.dataset.k,+b.dataset.l));
+ app.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{S.cur=b.dataset.t;save();home()});
+ const r=$('#rev');if(r)r.onclick=()=>run(shuf(d).slice(0,10),null);
+}
+function lesson(t,k,l){
+ const th=T.find(x=>x.id===t),items=th[k].slice(l*N,l*N+N).map((_,j)=>({t,k,i:l*N+j}));
+ const extra=due().filter(x=>!items.some(y=>key(y)===key(x))).slice(0,2);
+ run(shuf(items).concat(extra),{t,k,l});
+}
+function run(q,les){
+ let n=0,ok=0,tot=q.length,md=0;q=q.slice();const base=q.filter(x=>x.k==='w').slice(0,5);
+ const next=()=>{
+  if(S.hearts<=0&&les)return out();
+  if(n>=3&&!md&&base.length>=4&&q[0]&&q[0].k==='w'){md=1;return match(base,next,Math.round(n/tot*100),()=>{S.xp+=5;S.dxp+=5;save()})}
+  if(!q.length)return end();
+  const it=q.shift();(it.k==='p'?sent:word)(it,good=>{
+   if(good){ok++;S.xp+=10;S.dxp+=10;beep(660)}else{beep(220);if(les){if(S.hearts>=5)S.hAt=Date.now();S.hearts=Math.max(0,S.hearts-1)}if(!it.again)q.push({...it,again:1})}
+   if(!it.again)grade(it,good);n++;save();
+  },next,Math.round(n/tot*100));
+ };
+ const end=()=>{if(les)S.done[les.t+'|'+les.k]=Math.max(dn(les.t,les.k),les.l+1);else if(S.hearts<5)S.hearts++;S.xp+=20;S.dxp+=20;if(S.did!==dstr(0)){S.streak=(S.did===dstr(1)?S.streak:0)+1;S.did=dstr(0)}save();beep(880);
+  const r=Math.min(1,ok/tot);
+  app.innerHTML=`<div class="card" style="text-align:center"><p class="big" style="color:var(--gold);margin:0">${'★'.repeat(r>=.9?3:r>=.7?2:1)}</p><p class="lab">Lekce dokončena</p><p class="big">${Math.min(ok,tot)} z ${tot} správně</p><p class="lab">+${Math.min(ok,tot)*10+20} XP</p><p><button class="btn" id="b">Pokračovat</button></p></div>`;$('#b').onclick=home};
+ next();
+}
+function out(){app.innerHTML=`<div class="card" style="text-align:center"><p class="big">Došly životy ❤</p><p class="lab">Jeden se obnoví za 15 minut. Zkus zatím opakování.</p><p><button class="btn" id="b">Domů</button></p></div>`;$('#b').onclick=home}
+function match(items,next,pct,xp){
+ const L=shuf(items.map((_,i)=>i)),R=shuf(items.map((_,i)=>i));let a=null,left=items.length;
+ app.innerHTML=`<div class="card"><div class="bar"><i style="width:${pct}%"></i></div><p class="lab">Spoj páry</p><div class="pair" id="m"></div></div>`;
+ const m=$('#m');
+ L.forEach((_,r)=>[[L[r],'en'],[R[r],'cs']].forEach(([i,s])=>{const e=ent(items[i]),b=document.createElement('button');b.className='opt';b.dataset.s=s;b.dataset.i=i;b.textContent=e[s];
+  b.onclick=()=>{if(s==='en')say(e.en);
+   if(!a||a.dataset.s===s){a&&a.classList.remove('sel');a=b;b.classList.add('sel');return}
+   if(a.dataset.i===b.dataset.i){[a,b].forEach(x=>{x.disabled=true;x.className='opt ok'});beep(660);a=null;if(!--left){xp();setTimeout(next,600)}}
+   else{b.classList.add('bad');beep(220);const o=a;setTimeout(()=>{b.classList.remove('bad');o.classList.remove('sel')},400);a=null}};
+  m.appendChild(b)}));
+}
+function shell(label,pct,body){app.innerHTML=`<div class="card"><div class="bar"><i style="width:${pct}%"></i></div><div class="row"><span class="lab">${label} · ❤ ${S.hearts}</span><button class="ic" id="sp" style="margin-left:auto" aria-label="Přehrát">▶</button></div>${body}<div class="fb" id="fb"></div><div class="row"><button class="btn" id="go">Zkontrolovat</button><button class="btn g" id="x">Konec</button></div></div>`;$('#x').onclick=home}
+function fin(good,msg,done,next,en){$('#fb').innerHTML=`<span class="${good?'ok':'bad'}">${msg}</span>`;say(en);done(good);const g=$('#go');g.textContent='Další';g.onclick=next}
+function sent(it,done,next,pct){
+ const e=ent(it),t=e.en.split(' '),th=T.find(x=>x.id===it.t);
+ let tiles=t.map((w,i)=>({w,i}));
+ if(t.length>=4){const pool=T.flatMap(x=>x.p).flatMap(x=>x.en.split(' ')).filter(w=>/^[A-Za-z]+$/.test(w)&&!t.includes(w));if(pool.length)tiles.push({w:pool[Math.random()*pool.length|0],i:99})}
+ shuf(tiles);let ans=[],locked=false;
+ const LS=bx(it)>=1&&!S.mute&&Math.random()<.5;
+ shell(LS?'Poslouchej a slož větu':'Slož větu · '+th.name,pct,`<p class="big">${LS?'🔊':e.cs}</p><div class="zone" id="a"></div><div class="tray" id="t"></div>`);
+ $('#sp').onclick=()=>say(e.en);if(LS)say(e.en);
+ const draw=()=>{const mk=(arr,from)=>{const box=$(from?'#t':'#a');box.innerHTML='';arr.forEach(o=>{const b=document.createElement('button');b.className='t';b.textContent=o.w;b.onclick=()=>{if(locked)return;if(from){tiles=tiles.filter(x=>x!==o);ans.push(o)}else{ans=ans.filter(x=>x!==o);tiles.push(o)}say(o.w);draw()};box.appendChild(b)})};mk(ans,0);mk(tiles,1)};
+ draw();
+ $('#go').onclick=()=>{if(locked||!ans.length)return;locked=true;const u=ans.map(x=>x.w),good=u.join(' ')===e.en;
+  let msg='Správně! ✓';
+  if(!good){const c={};t.forEach(w=>c[w]=(c[w]||0)+1);const ex=[];u.forEach(w=>c[w]>0?c[w]--:ex.push(w));const mi=Object.keys(c).filter(w=>c[w]>0);
+   if(ex.length)msg=`Špatné nebo nadbytečné slovo: „${ex.join(', ')}“. Správně: ${e.en}`;
+   else if(mi.length)msg=`Chybí: „${mi.join(', ')}“. Správně: ${e.en}`;
+   else{const k=u.findIndex((w,i)=>w!==t[i]);msg=`Slova sedí, ale špatný slovosled – od pozice ${k+1} má být „${t[k]}“. Správně: ${e.en}`}}
+  fin(good,msg,done,next,e.en)};
+}
+function word(it,done,next,pct){
+ const e=ent(it);let locked=false;
+ if(bx(it)<2){
+  const own=T.find(x=>x.id===it.t).w,pool=own.length>=4?own:T.flatMap(x=>x.w);
+  const o=shuf([e.cs,...shuf(pool.filter(x=>x.cs!==e.cs)).slice(0,3).map(x=>x.cs)]);
+  shell('Vyber překlad',pct,`<p class="big">${e.en}</p>`+o.map(s=>`<button class="opt">${s}</button>`).join(''));
+  $('#go').style.display='none';say(e.en);$('#sp').onclick=()=>say(e.en);
+  app.querySelectorAll('.opt').forEach(x=>x.onclick=()=>{if(locked)return;locked=true;const good=x.textContent===e.cs;x.classList.add(good?'ok':'bad');
+   app.querySelectorAll('.opt').forEach(y=>y.textContent===e.cs&&y.classList.add('ok'));
+   const g=$('#go');g.style.display='';fin(good,good?'Správně! ✓':`Správně: ${e.en} = ${e.cs}`,done,next,e.en)});
+ }else{
+  shell('Napiš anglicky',pct,`<p class="big">${e.cs}</p><input class="in" id="i" autocomplete="off" autocapitalize="off" spellcheck="false">`);
+  $('#sp').onclick=()=>say(e.en);
+  $('#go').onclick=()=>{if(locked)return;locked=true;const v=norm($('#i').value),c=norm(e.en),good=v===c;
+   const msg=good?'Správně! ✓':lev(v,c)<=1&&v?`Skoro – překlep. Správně: ${e.en}`:`Správně: ${e.en}`;fin(good,msg,done,next,e.en)};
+  $('#i').onkeydown=ev=>{if(ev.key==='Enter')$('#go').click()};$('#i').focus();
+ }
+}
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+load();
+</script>
+</body>
+</html>

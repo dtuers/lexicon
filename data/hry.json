@@ -1,0 +1,71 @@
+{
+"name": "Hry",
+"phrases": [
+[
+"Watch out behind you!",
+"Pozor za tebou!"
+],
+[
+"I need backup.",
+"Potřebuji posily."
+],
+[
+"Let’s team up.",
+"Pojďme se spojit do týmu."
+],
+[
+"Good game, well played.",
+"Dobrá hra, pěkně zahráno."
+],
+[
+"Where do we go next?",
+"Kam půjdeme dál?"
+],
+[
+"I’m out of ammo.",
+"Došla mi munice."
+],
+[
+"Heal me, please.",
+"Vyléčte mě, prosím."
+],
+[
+"I got stuck on this level.",
+"Zasekl jsem se na této úrovni."
+],
+[
+"Let’s try again.",
+"Zkusme to znovu."
+],
+[
+"Save the game.",
+"Ulož hru."
+],
+[
+"I’ll cover you.",
+"Budu tě krýt."
+]
+],
+"words": [
+[
+"level",
+"úroveň"
+],
+[
+"enemy",
+"nepřítel"
+],
+[
+"weapon",
+"zbraň"
+],
+[
+"mission",
+"mise"
+],
+[
+"health",
+"zdraví"
+]
+]
+}

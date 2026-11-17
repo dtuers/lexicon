@@ -1,0 +1,71 @@
+{
+"name": "Dovolená",
+"phrases": [
+[
+"I’d like to book a room.",
+"Chtěl bych si rezervovat pokoj."
+],
+[
+"Do you have any vacancies?",
+"Máte nějaké volné pokoje?"
+],
+[
+"What time is check-out?",
+"V kolik je odhlášení?"
+],
+[
+"Where can I rent a car?",
+"Kde si mohu půjčit auto?"
+],
+[
+"How do I get to the beach?",
+"Jak se dostanu na pláž?"
+],
+[
+"Could you take a photo of us?",
+"Mohl byste nás vyfotit?"
+],
+[
+"Is breakfast included?",
+"Je snídaně v ceně?"
+],
+[
+"I’ve lost my passport.",
+"Ztratil jsem pas."
+]
+],
+"words": [
+[
+"ticket",
+"lístek"
+],
+[
+"journey",
+"cesta"
+],
+[
+"luggage",
+"zavazadlo"
+],
+[
+"passport",
+"pas"
+],
+[
+"beach",
+"pláž"
+],
+[
+"reservation",
+"rezervace"
+],
+[
+"flight",
+"let"
+],
+[
+"tourist",
+"turista"
+]
+]
+}

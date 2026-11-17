@@ -1,0 +1,63 @@
+{
+"name": "Práce",
+"phrases": [
+[
+"Let’s schedule a meeting.",
+"Naplánujme schůzku."
+],
+[
+"I’ll get back to you.",
+"Ozvu se vám."
+],
+[
+"Could you send me the report?",
+"Mohl byste mi poslat zprávu?"
+],
+[
+"The deadline is tomorrow.",
+"Termín je zítra."
+],
+[
+"I’m in charge of this project.",
+"Mám tento projekt na starosti."
+],
+[
+"Let’s keep in touch.",
+"Zůstaňme v kontaktu."
+],
+[
+"Thanks for your patience.",
+"Děkuji za trpělivost."
+],
+[
+"I’ll take care of it.",
+"Postarám se o to."
+],
+[
+"Sorry for the delay.",
+"Omlouvám se za zpoždění."
+],
+[
+"Let’s go over the details.",
+"Projděme si podrobnosti."
+],
+[
+"I agree with you.",
+"Souhlasím s vámi."
+],
+[
+"Can you hear me?",
+"Slyšíte mě?"
+]
+],
+"words": [
+[
+"meeting",
+"schůzka"
+],
+[
+"deadline",
+"termín"
+]
+]
+}
